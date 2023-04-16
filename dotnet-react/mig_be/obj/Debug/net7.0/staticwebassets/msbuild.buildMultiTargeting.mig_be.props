@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\mig_be.props" />
+</Project>
