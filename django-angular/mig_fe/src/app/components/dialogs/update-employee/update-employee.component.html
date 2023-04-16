@@ -1,0 +1,34 @@
+<header>
+  <h2>Update Employee</h2>
+</header>
+<form [formGroup]="updateEmployeeForm">
+  <!-- Employee Name -->
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="employee_name">
+  </mat-form-field>
+
+  <!-- Join Date -->
+  <mat-form-field>
+    <mat-label>Join Date</mat-label>
+    <input matInput formControlName="date_of_joining" [matDatepicker]="picker">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Employee Sex -->
+  <mat-form-field>
+    <mat-label>Sex</mat-label>
+    <mat-select formControlName="sex">
+      <mat-option value="M">Male</mat-option>
+      <mat-option value="F">Female</mat-option>
+      <mat-option value="O">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Submit Button -->
+  <!-- Made the type a "button" because "submit" would mark the fields as dirty -->
+  <button mat-button type="button" [disabled]="updateEmployeeForm.invalid"
+    (click)="updateEmployeeDialog()">Submit</button>
+</form>

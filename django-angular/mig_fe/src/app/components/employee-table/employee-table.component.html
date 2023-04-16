@@ -1,0 +1,100 @@
+<header>
+  <h1>Merchants Insurance Group</h1>
+</header>
+<article>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h2>Add An Employee</h2>
+
+    <!-- New Employee Form -->
+    <!-- Not using "ngSubmit" because that would lead to the form fields being marked red/dirty -->
+    <form [formGroup]="newEmployeeForm">
+      <!-- Employee Name -->
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="employee_name">
+      </mat-form-field>
+
+      <!-- Join Date -->
+      <mat-form-field>
+        <mat-label>Join Date</mat-label>
+        <input matInput formControlName="date_of_joining" [matDatepicker]="picker">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Employee Sex -->
+      <mat-form-field>
+        <mat-label>Sex</mat-label>
+        <mat-select formControlName="sex">
+          <mat-option value="M">Male</mat-option>
+          <mat-option value="F">Female</mat-option>
+          <mat-option value="O">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Submit Button -->
+      <!-- Made the type a "button" because "submit" would mark the fields as dirty -->
+      <button mat-button type="button" [disabled]="newEmployeeForm.invalid" (click)="addEmployee()">Submit</button>
+    </form>
+  </div>
+
+  <!-- Employee Table -->
+  <mat-table [dataSource]="dataSource">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let record"> {{record.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Employee Name Column -->
+    <ng-container matColumnDef="employee_name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let record"> {{record.employee_name}} </mat-cell>
+    </ng-container>
+
+    <!-- Date of Joining Column -->
+    <ng-container matColumnDef="date_of_joining">
+      <mat-header-cell *matHeaderCellDef> Join Date </mat-header-cell>
+      <mat-cell *matCellDef="let record"> {{record.date_of_joining}} </mat-cell>
+    </ng-container>
+
+    <!-- Employee Sex Column -->
+    <ng-container matColumnDef="sex">
+      <mat-header-cell *matHeaderCellDef> Sex </mat-header-cell>
+      <mat-cell *matCellDef="let record"> {{record.sex}} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let record">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="updateEmployee(record)">
+            <mat-icon>update</mat-icon>
+            <span>Update Employee</span>
+          </button>
+          <button mat-menu-item (click)="deleteEmployee(record.id)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete Employee</span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Row Data -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row> -->
+
+  </mat-table>
+</article>
+
+<footer>
+  <h2>Merchants Insurance Group / Full-Stack Developer / Django + Angular / Zachary Pataky</h2>
+</footer>

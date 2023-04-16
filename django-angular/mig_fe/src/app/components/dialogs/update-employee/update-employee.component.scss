@@ -1,0 +1,36 @@
+header {
+  padding: 3rem;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  padding-top: 0rem;
+
+  mat-form-field {
+    margin-top: 2rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  button {
+    align-self: start;
+    margin-top: 2rem;
+
+    &:hover {
+      background-color: #900028;
+      color: #fff;
+      transition: 0.2s;
+    }
+  }
+}
