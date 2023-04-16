@@ -82,7 +82,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mig_django_db',
         'USER': 'root',
-        'PASSWORD': 'MySQLpassword123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
